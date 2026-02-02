@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Essentials</string>
+    <string name="app_name">Patchwork</string>
     <string name="label_beta">ベータ</string>
-    <string name="accessibility_service_description"><b>Essentials アクセシビリティサービス</b>\n\nこのサービスは、以下の高度な機能に必要です。\n\n<b>・物理ボタンの再マッピング：</b>\n画面がオフの場合でも音量ボタンの押下を検出し、懐中電灯などのアクションを実行します。\n\n<b>・アプリごとの設定：</b>\n現在アクティブなアプリを監視し、ダイナミックナイトモード、通知ライトの色、アプリロックの特定のプロファイルを適用します。\n\n<b>・画面制御：</b>\nアプリが画面をロック（ダブルタップやウィジェット経由など）し、画面の状態の変化を検出できるようにします。\n\n<b>・セキュリティ：</b>\nデバイスがロックされているときにウィンドウの内容を検出することで、不正な変更を防ぎます。\n\n<small>入力テキストや機密性の高いユーザーデータは収集または送信されません。</small></string>
+    <string name="accessibility_service_description"><b>Patchwork アクセシビリティサービス</b>\n\nこのサービスは、以下の高度な機能に必要です。\n\n<b>・物理ボタンの再マッピング：</b>\n画面がオフの場合でも音量ボタンの押下を検出し、懐中電灯などのアクションを実行します。\n\n<b>・アプリごとの設定：</b>\n現在アクティブなアプリを監視し、ダイナミックナイトモード、通知ライトの色、アプリロックの特定のプロファイルを適用します。\n\n<b>・画面制御：</b>\nアプリが画面をロック（ダブルタップやウィジェット経由など）し、画面の状態の変化を検出できるようにします。\n\n<b>・セキュリティ：</b>\nデバイスがロックされているときにウィンドウの内容を検出することで、不正な変更を防ぎます。\n\n<small>入力テキストや機密性の高いユーザーデータは収集または送信されません。</small></string>
     <string name="app_icon">アプリアイコン</string>
     <string name="freeze_activity_title">アプリフリーズ</string>
     <string name="freeze_activity_subtitle">しばらく使用していないアプリを無効にします</string>
@@ -168,7 +168,7 @@
     <string name="tile_app_freezing">アプリフリーズ</string>
     <string name="tile_flashlight_pulse">ライト点滅</string>
     <string name="tile_stay_awake">スリープしない</string>
-    <string name="input_method_label">Essentials キーボード</string>
+    <string name="input_method_label">Patchwork キーボード</string>
     <string name="subtype_en_us">English (US) 英語</string>
     <string name="tile_active">動作中</string>
     <string name="tile_inactive">停止中</string>
@@ -458,7 +458,7 @@
     <string name="perm_battery_optimization_title">バッテリーの最適化を無視</string>
     <string name="perm_battery_optimization_desc">バッテリー節約のためにシステムがアプリを強制終了しないようにしてください。</string>
     <!-- Tabs -->
-    <string name="tab_essentials">Essentials</string>
+    <string name="tab_Patchwork">Patchwork</string>
     <string name="tab_freeze">フリーズ</string>
     <string name="tab_freeze_title">フリーズ</string>
     <string name="tab_diy">DIY</string>
@@ -467,7 +467,7 @@
     <!-- Keyboard Setup -->
     <string name="label_keyboard_setup">キーボードセットアップ</string>
     <string name="btn_enable_keyboard">設定で有効にする</string>
-    <string name="btn_select_keyboard">Essentialsに切り替える</string>
+    <string name="btn_select_keyboard">Patchworkに切り替える</string>
     <string name="status_keyboard_ready">キーボードは準備済みです！</string>
     <string name="label_enabled">有効</string>
     <string name="label_disabled">無効</string>
@@ -540,7 +540,7 @@
     <!-- About Section -->
     <string name="app_developer_name">Tino Britty J</string>
     <string name="app_description">あなたのPixelとAndroidのオールインワンツールボックス</string>
-    <string name="email_subject_hello">Essentialsからこんにちは</string>
+    <string name="email_subject_hello">Patchworkからこんにちは</string>
     <!-- Edge Lighting -->
     <string name="color_mode_system">システム</string>
     <string name="color_mode_custom">カスタム</string>
@@ -794,7 +794,7 @@
     <!-- Instructions Content -->
     <string name="instruction_section_perms_title">アクセシビリティ、通知、他のアプリの上に重ねて表示権限</string>
     <string name="instruction_step_perms_1">アクセシビリティ、通知の読み取り、オーバーレイなどの機密性の高い権限を付与しようとすると、このアクセス拒否メッセージが表示されることがあります。付与するには以下の手順を確認してください。</string>
-    <string name="instruction_step_perms_2">1. Essentialsのアプリ情報に移動する。</string>
+    <string name="instruction_step_perms_2">1. Patchworkのアプリ情報に移動する。</string>
     <string name="instruction_step_perms_3">2. 3点メニューを開き、「制限付き設定を許可」を選択します。生体認証が必要になる場合があります。完了したら、再度権限を付与してください。</string>
     <string name="instruction_section_shizuku_title">Shizuku</string>
     <string name="instruction_section_shizuku_desc">Shizukuは、アプリがADBまたはRoot権限でシステムAPIを直接使用できるようにする強力なツールです。マップパワーセービングモード、アプリフリーズなどの機能に必要です。また、WRITE_SECURE_SETTINGSなどの一部の権限の付与を支援します。\n\nただし、Playストア版のShizukuは古く、最近のAndroidバージョンでは使用できない可能性があります。その場合は、GitHubまたは最新バージョンのフォークを入手してください。</string>
@@ -815,7 +815,7 @@
     <string name="instruction_section_flashlight_title">フラッシュライトの明るさ調整が機能しません</string>
     <string name="instruction_section_flashlight_desc">フラッシュライトの明るさ調整をハードウェアとソフトウェアでサポートしているデバイスは限られています。\n\n「Androidの最小バージョンは13 (SDK33) です。\nフラッシュライトの明るさ調整はHALバージョン3.8以降のみをサポートしているため、サポートされている中で最新のもの(例：Pixel 6/7、Samsung S23など)のみが対象です。」\npolodarb/Flashlight-Tiramisu</string>
     <string name="instruction_section_about_title">このアプリは一体何ですか？</string>
-    <string name="instruction_section_about_desc">いい質問ですね、\n\n最初のProject Trebleデバイスを入手して以来、ずっとRoot化ユーザーだったので、デバイスを最大限に活用したいと思っていました。そして、自動化やAndroidのあらゆるAPIと内部機能の活用に関しては神のようなTaskerアプリが大好きです。\n\nそのため、Root化を解除し、ストックAndroidベータ版に戻り、与えられた権限でできることを最大限に活用したいと考え、せっかくなので共有したいと思いました。そこで、Kotlin Jetpackの初心者レベルの知識と、多くの調査・支援ツール、そして素晴らしいコミュニティのサポートを受けて、Androidに欲しいものをすべて含んだ、与えられた権限でオールインワンのアプリを構築しました。そしてこれが完成形です。\n\n機能リクエストは歓迎します。利用可能な権限と私のスキルで実現可能かどうか検討します。最近は不可能なことばかりです。:)\n\nなぜPlayストアではだめなのですか？\nアプリで使用されている非常に機密性の高い内部権限とAPIが原因で、開発者アカウントが停止されるリスクがあるからです。しかし、Androidのサイドローディングの方向性を考えると、どうすればよいか見てみましょう。サイドローディングされたアプリが悪意のあるものであるという懸念は理解しています。\nついでに、MacとAndroidの両方をお使いの方は、私の別のアプリ「AirSync」もチェックしてみてください。(宣伝です)\n\nEnjoy, Keep building! (っ◕‿◕)っ</string>
+    <string name="instruction_section_about_desc">いい質問ですね、\n\n最初のProject Trebleデバイスを入手して以来、ずっとRoot化ユーザーだったので、デバイスを最大限に活用したいと思っていました。そして、自動化やAndroidのあらゆるAPIと内部機能の活用に関しては神のようなTaskerアプリが大好きです。\n\nそのため、Root化を解除し、ストックAndroidベータ版に戻り、与えられた権限でできることを最大限に活用したいと考え、せっかくなので共有したいと思いました。そこで、Kotlin Jetpackの初心者レベルの知識と、多くの調査・支援ツール、そして素晴らしいコミュニティのサポートを受けて、Androidに欲しいものをすべて含んだ、与えられた権限でオールインワンのアプリを構築しました。そしてこれが完成形です。\n\n機能リクエストは歓迎します。利用可能な権限と私のスキルで実現可能かどうか検討します。最近は不可能なことばかりです。:)\n\nなぜPlayストアではだめなのですか？\nアプリで使用されている非常に機密性の高い内部権限とAPIが原因で、開発者アカウントが停止されるリスクがあるからです。しかし、Androidのサイドローディングの方向性を考えると、どうすればよいか見てみましょう。サイドローディングされたアプリが悪意のあるものであるという懸念は理解しています。\nついでに、MacとAndroidの両方をお使いの方は、私の別のアプリ「AirSync」もチェックしてみてください。(宣伝です)\n\nEnjoy, Keep building! </string>
     <!-- Bug Reporting -->
     <string name="action_report_bug">バグを報告</string>
     <string name="toast_bug_report_copied">バグレポートをクリップボードにコピーしました</string>
@@ -827,7 +827,7 @@
     <string name="action_report_github">GitHub Issueを開く</string>
     <string name="action_report_email">メールで報告</string>
     <string name="action_copy_clipboard">クリップボードにコピー</string>
-    <string name="bug_report_email_subject">Essentials Bug Report (バグレポート)</string>
+    <string name="bug_report_email_subject">Patchwork Bug Report (バグレポート)</string>
     <string name="bug_report_send_via">送信方法</string>
     <!-- Location Reached -->
     <string name="feat_location_reached_title">Location reached</string>
@@ -836,7 +836,7 @@
     <string name="location_reached_set_destination_btn">目的地をセット</string>
     <string name="location_reached_status_tracking">トラッキング中：%1$.4f, %2$.4f</string>
     <string name="location_reached_status_none">目的地がセットされていません</string>
-    <string name="location_reached_how_to">Open your map app, pick a location, and share it to Essentials.</string>
+    <string name="location_reached_how_to">Open your map app, pick a location, and share it to Patchwork.</string>
     <string name="location_reached_radius_title">Radius: %d m</string>
     <string name="location_reached_radius_desc">知らせる距離</string>
     <string name="location_reached_enable_title">通知オン</string>

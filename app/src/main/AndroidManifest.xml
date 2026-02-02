@@ -448,7 +448,7 @@
 
         <service
             android:name=".services.EssentialsConditionProvider"
-            android:label="Essentials Focus"
+            android:label="Patchwork Focus"
             android:permission="android.permission.BIND_CONDITION_PROVIDER_SERVICE"
             android:exported="true">
             <intent-filter>
@@ -559,9 +559,9 @@
             android:name=".services.receivers.FlashlightActionReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.brittytino.essentials.ACTION_FLASHLIGHT_INCREASE" />
-                <action android:name="com.brittytino.essentials.ACTION_FLASHLIGHT_DECREASE" />
-                <action android:name="com.brittytino.essentials.ACTION_FLASHLIGHT_OFF" />
+                <action android:name="com.brittytino.patchwork.ACTION_FLASHLIGHT_INCREASE" />
+                <action android:name="com.brittytino.patchwork.ACTION_FLASHLIGHT_DECREASE" />
+                <action android:name="com.brittytino.patchwork.ACTION_FLASHLIGHT_OFF" />
             </intent-filter>
         </receiver>
 
@@ -580,9 +580,9 @@
         <receiver
             android:name=".services.receivers.AirSyncBridgeReceiver"
             android:exported="true"
-            android:permission="com.brittytino.permission.ESSENTIALS_AIRSYNC_BRIDGE">
+            android:permission="com.brittytino.permission.PATCHWORK_AIRSYNC_BRIDGE">
             <intent-filter>
-                <action android:name="com.brittytino.essentials.action.UPDATE_MAC_BATTERY" />
+                <action android:name="com.brittytino.patchwork.action.UPDATE_MAC_BATTERY" />
             </intent-filter>
         </receiver>
     </application>

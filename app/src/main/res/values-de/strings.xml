@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Essentials</string>
+    <string name="app_name">Patchwork</string>
     <string name="label_beta">BETA</string>
-    <string name="accessibility_service_description"><b>Essentials Barrierefreiheitsdienst</b>\n\nDieser Dienst ist für die folgenden erweiterten Funktionen erforderlich:\n\n<b>• Neuzuordnung physischer Tasten:</b>\nErkennt das Drücken der Lautstärketasten auch bei ausgeschaltetem Display, um Aktionen wie die Taschenlampe auszulösen.\n\n<b>• Einstellungen pro App:</b>\nÜberwacht die aktuell aktive App, um bestimmte Profile für dynamisches Nachtlicht, Benachrichtigungsfarben und App-Sperre anzuwenden.\n\n<b>• Displaysteuerung:</b>\nErmöglicht es der App, das Display zu sperren (z. B. durch Doppeltippen oder Widgets) und Änderungen des Bildschirmstatus zu erkennen.\n\n<b>• Sicherheit:</b>\nVerhindert unbefugte Änderungen, indem der Fensterinhalt erkennt wird, wenn das Gerät gesperrt ist.\n\n<small>Es werden keine eingegebenen Texte oder sensiblen Benutzerdaten erfasst oder übertragen.</small></string>
+    <string name="accessibility_service_description"><b>Patchwork Barrierefreiheitsdienst</b>\n\nDieser Dienst ist für die folgenden erweiterten Funktionen erforderlich:\n\n<b>• Neuzuordnung physischer Tasten:</b>\nErkennt das Drücken der Lautstärketasten auch bei ausgeschaltetem Display, um Aktionen wie die Taschenlampe auszulösen.\n\n<b>• Einstellungen pro App:</b>\nÜberwacht die aktuell aktive App, um bestimmte Profile für dynamisches Nachtlicht, Benachrichtigungsfarben und App-Sperre anzuwenden.\n\n<b>• Displaysteuerung:</b>\nErmöglicht es der App, das Display zu sperren (z. B. durch Doppeltippen oder Widgets) und Änderungen des Bildschirmstatus zu erkennen.\n\n<b>• Sicherheit:</b>\nVerhindert unbefugte Änderungen, indem der Fensterinhalt erkennt wird, wenn das Gerät gesperrt ist.\n\n<small>Es werden keine eingegebenen Texte oder sensiblen Benutzerdaten erfasst oder übertragen.</small></string>
     <string name="app_icon">App-Icon</string>
     <string name="freeze_activity_title">Apps einfrieren</string>
     <string name="freeze_activity_subtitle">Deaktiviere Apps, welche selten verwendet werden</string>
@@ -168,7 +168,7 @@
     <string name="tile_app_freezing">Apps einfrieren</string>
     <string name="tile_flashlight_pulse">Taschenlampenimpuls</string>
     <string name="tile_stay_awake">Wach bleiben</string>
-    <string name="input_method_label">Essentials-Tastatur</string>
+    <string name="input_method_label">Patchwork-Tastatur</string>
     <string name="subtype_en_us">Englisch (US)</string>
     <string name="tile_active">Aktiv</string>
     <string name="tile_inactive">Inaktiv</string>
@@ -458,7 +458,7 @@
     <string name="perm_battery_optimization_title">Akkuoptimierung</string>
     <string name="perm_battery_optimization_desc">Stelle sicher, dass der Service nicht von dem System gestoppt wird, um Strom zu sparen.</string>
     <!-- Tabs -->
-    <string name="tab_essentials">Essentials</string>
+    <string name="tab_Patchwork">Patchwork</string>
     <string name="tab_freeze">Einfrieren</string>
     <string name="tab_freeze_title">Eingefroren</string>
     <string name="tab_diy">DIY</string>
@@ -467,7 +467,7 @@
     <!-- Keyboard Setup -->
     <string name="label_keyboard_setup">Tastatur-Einrichtung</string>
     <string name="btn_enable_keyboard">In den Einstellungen aktivieren</string>
-    <string name="btn_select_keyboard">Wechsel zu Essentials</string>
+    <string name="btn_select_keyboard">Wechsel zu Patchwork</string>
     <string name="status_keyboard_ready">Tastatur ist aktiv und bereit!</string>
     <string name="label_enabled">Aktiviert</string>
     <string name="label_disabled">Deaktiviert</string>
@@ -540,7 +540,7 @@
     <!-- About Section -->
     <string name="app_developer_name">Tino Britty J</string>
     <string name="app_description">Die alles umfassende Werkzeugkiste für Ihr Pixel und Android-Geräte</string>
-    <string name="email_subject_hello">Hallo von Essentials</string>
+    <string name="email_subject_hello">Hallo von Patchwork</string>
     <!-- Edge Lighting -->
     <string name="color_mode_system">System</string>
     <string name="color_mode_custom">Individuell</string>
@@ -794,7 +794,7 @@
     <!-- Instructions Content -->
     <string name="instruction_section_perms_title">Berechtigungen für Barrierefreiheit, Benachrichtigungen und Overlays</string>
     <string name="instruction_step_perms_1">Diese Zugriffsverweigerungsmeldung wird möglicherweise angezeigt, wenn du versuchst, sensible Berechtigungen wie den Barrierefreiheitsdienst, Benachrichtigungs-Beobachter oder Overlay-Berechtigungen zu erteilen. Um diese zu gewähren, führe die folgenden Schritte aus.</string>
-    <string name="instruction_step_perms_2">1. Gehe auf die App-Info-Seite von Essentials.</string>
+    <string name="instruction_step_perms_2">1. Gehe auf die App-Info-Seite von Patchwork.</string>
     <string name="instruction_step_perms_3">2. Öffne das 3-Punkte-Menü und wähle \"Eingeschränkte Einstellungen zulassen\". Möglicherweise musst dich mit biometrischen Daten authentifizieren. Versuche anschließend erneut, die Berechtigung zu erteilen.</string>
     <string name="instruction_section_shizuku_title">Shizuku</string>
     <string name="instruction_section_shizuku_desc">Shizuku ist eine leistungsstarkes App, mit der andere Apps System-APIs direkt mit ADB- oder Root-Berechtigungen nutzen können. Es wird für Funktionen wie den Energiesparmodus von Maps und für die Einfrieren-Funktion benötigt. Es hilft auch dabei, bestimmte Berechtigungen wie WRITE_SECURE_SETTINGS zu erteilen. \n\nDie Play Store-Version von Shizuku ist jedoch möglicherweise veraltet und auf neueren Android-Versionen wahrscheinlich nicht mehr verwendbar. In diesem Fall lade bitte die neueste Version von GitHub oder einen aktuellen Fork davon herunter.</string>
@@ -815,7 +815,7 @@
     <string name="instruction_section_flashlight_title">Die Helligkeit der Taschenlampe funktioniert nicht</string>
     <string name="instruction_section_flashlight_desc">Nur eine begrenzte Anzahl von Geräten verfügt über Hardware- und Software-Unterstützung zur Einstellung der Taschenlampenintensität. \n\nDie Mindestversion von Android ist 13 (SDK33).\nDie Helligkeitseinstellung der Taschenlampe unterstützt nur HAL Version 3.8 und höher, daher gehören zu den unterstützten Geräten die neuesten Modelle (z. B. Pixel 6/7, Samsung S23 usw.).\'\npolodarb/Flashlight-Tiramisu</string>
     <string name="instruction_section_about_title">Was zum Teufel ist das für eine App?</string>
-    <string name="instruction_section_about_desc">Gute Frage,\n\nIch wollte schon immer das Beste aus meinen Geräten herausholen, da ich seit meinem ersten Project Treble-Gerät roote. Und ich liebe die Tasker-App, die in Sachen Automatisierung und Nutzung aller möglichen APIs und internen Funktionen von Android einfach unschlagbar ist. \n\nIch bin also nicht unrooted und zurück bei der Standard-Android-Beta-Erfahrung und wollte das Beste aus den mir zur Verfügung stehenden Möglichkeiten herausholen. Das kann ich auch gleich teilen. Mit meinen Anfängerkenntnissen in Kotlin Jetpack und der Unterstützung vieler Recherche- und Hilfswerkzeuge sowie einer großartigen Community habe ich eine All-in-One-App entwickelt, die alles enthält, was ich mir mit den gegebenen Berechtigungen für mein Android-Gerät gewünscht habe. Und hier ist sie. \n\nFeature-Anfragen sind willkommen, ich werde prüfen, ob sie mit den verfügbaren Berechtigungen und meinen Fähigkeiten realisierbar sind. Was ist heutzutage nicht möglich? :)\n\nWarum nicht im Play Store?\nIch möchte nicht riskieren, dass mein Entwicklerkonto aufgrund der hochsensiblen und internen Berechtigungen und APIs, die in der App verwendet werden, gesperrt wird. Aber angesichts der Entwicklung des Android-Sideloadings werden wir sehen, was wir tun müssen. Ich verstehe die Bedenken, dass sideloadete Apps bösartig sein könnten. \nDa wir gerade beim Thema sind: Wenn du Mac- und Android-Nutzer bist, schaue dir doch meine andere App AirSync an. *schamlose Werbung* \n\nViel Spaß beim Weiterbauen! (っ◕‿◕)っ</string>
+    <string name="instruction_section_about_desc">Gute Frage,\n\nIch wollte schon immer das Beste aus meinen Geräten herausholen, da ich seit meinem ersten Project Treble-Gerät roote. Und ich liebe die Tasker-App, die in Sachen Automatisierung und Nutzung aller möglichen APIs und internen Funktionen von Android einfach unschlagbar ist. \n\nIch bin also nicht unrooted und zurück bei der Standard-Android-Beta-Erfahrung und wollte das Beste aus den mir zur Verfügung stehenden Möglichkeiten herausholen. Das kann ich auch gleich teilen. Mit meinen Anfängerkenntnissen in Kotlin Jetpack und der Unterstützung vieler Recherche- und Hilfswerkzeuge sowie einer großartigen Community habe ich eine All-in-One-App entwickelt, die alles enthält, was ich mir mit den gegebenen Berechtigungen für mein Android-Gerät gewünscht habe. Und hier ist sie. \n\nFeature-Anfragen sind willkommen, ich werde prüfen, ob sie mit den verfügbaren Berechtigungen und meinen Fähigkeiten realisierbar sind. Was ist heutzutage nicht möglich? :)\n\nWarum nicht im Play Store?\nIch möchte nicht riskieren, dass mein Entwicklerkonto aufgrund der hochsensiblen und internen Berechtigungen und APIs, die in der App verwendet werden, gesperrt wird. Aber angesichts der Entwicklung des Android-Sideloadings werden wir sehen, was wir tun müssen. Ich verstehe die Bedenken, dass sideloadete Apps bösartig sein könnten. \nDa wir gerade beim Thema sind: Wenn du Mac- und Android-Nutzer bist, schaue dir doch meine andere App AirSync an. *schamlose Werbung* \n\nViel Spaß beim Weiterbauen! </string>
     <!-- Bug Reporting -->
     <string name="action_report_bug">Fehler melden</string>
     <string name="toast_bug_report_copied">Fehlermeldung in die Zwischenablage kopiert</string>
@@ -827,7 +827,7 @@
     <string name="action_report_github">GitHub-Issue öffnen</string>
     <string name="action_report_email">Per E-Mail melden</string>
     <string name="action_copy_clipboard">In die Zwischenablage kopieren</string>
-    <string name="bug_report_email_subject">Essentials Fehlerbericht</string>
+    <string name="bug_report_email_subject">Patchwork Fehlerbericht</string>
     <string name="bug_report_send_via">Senden über</string>
     <!-- Location Reached -->
     <string name="feat_location_reached_title">Location reached</string>
@@ -836,7 +836,7 @@
     <string name="location_reached_set_destination_btn">Ziel setzen</string>
     <string name="location_reached_status_tracking">Erfassung: %1$.4f, %2$.4f</string>
     <string name="location_reached_status_none">Kein Ziel gesetzt</string>
-    <string name="location_reached_how_to">Open your map app, pick a location, and share it to Essentials.</string>
+    <string name="location_reached_how_to">Open your map app, pick a location, and share it to Patchwork.</string>
     <string name="location_reached_radius_title">Radius: %d m</string>
     <string name="location_reached_radius_desc">Entfernung zum Auslösen des Alarms</string>
     <string name="location_reached_enable_title">Benachrichtigung aktivieren</string>

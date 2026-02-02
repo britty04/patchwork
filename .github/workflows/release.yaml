@@ -1,0 +1,122 @@
+name: Build and Release APK
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.1)'
+        required: true
+        default: 'v1.0.1'
+
+jobs:
+  build:
+    name: Build Release APK
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --no-daemon --stacktrace
+
+      - name: Sign APK
+        id: sign_apk
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
+
+      - name: Rename APK
+        run: |
+          VERSION="${{ github.ref_name }}"
+          if [ -z "$VERSION" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          fi
+          VERSION_NUM="${VERSION#v}"
+          mv app/build/outputs/apk/release/app-release-unsigned-signed.apk "patchwork-${VERSION_NUM}.apk"
+
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          VERSION="${{ github.ref_name }}"
+          if [ -z "$VERSION" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          fi
+          
+          echo "## 🎉 Patchwork ${VERSION}" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "### What's New" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          
+          # Get commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$LAST_TAG" ]; then
+            git log ${LAST_TAG}..HEAD --pretty=format:"- %s" --no-merges >> CHANGELOG.md
+          else
+            echo "- Initial release of Patchwork! 🚀" >> CHANGELOG.md
+            echo "- Complete Android power user toolkit" >> CHANGELOG.md
+            echo "- 50+ features for customization and automation" >> CHANGELOG.md
+          fi
+          
+          echo "" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "### 📱 Installation" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "1. Download \`patchwork-${VERSION#v}.apk\`" >> CHANGELOG.md
+          echo "2. Enable installation from unknown sources" >> CHANGELOG.md
+          echo "3. Install and enjoy!" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "### 📋 Requirements" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "- Android 8.0 (Oreo) or higher" >> CHANGELOG.md
+          echo "- Shizuku or Root (optional, for advanced features)" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "### 🔗 Links" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "- [Documentation](https://github.com/brittytino/patchwork#readme)" >> CHANGELOG.md
+          echo "- [Telegram Community](https://t.me/tidwib)" >> CHANGELOG.md
+          echo "- [Report Issues](https://github.com/brittytino/patchwork/issues)" >> CHANGELOG.md
+          
+          cat CHANGELOG.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: patchwork-*.apk
+          body_path: CHANGELOG.md
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.ref_name || github.event.inputs.version }}
+          name: Patchwork ${{ github.ref_name || github.event.inputs.version }}
+
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: patchwork-apk
+          path: patchwork-*.apk
+          retention-days: 90

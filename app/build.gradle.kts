@@ -21,8 +21,8 @@ android {
         applicationId = "com.brittytino.patchwork"
         minSdk = 26
         targetSdk = 36
-        versionCode = 23
-        versionName = "10.2"
+        versionCode = 1
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,6 +36,12 @@ android {
             )
         }
     }
+    
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+    
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

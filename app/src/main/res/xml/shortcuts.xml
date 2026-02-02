@@ -9,7 +9,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.brittytino.patchwork"
-            android:targetClass="com.brittytino.essentials.ui.activities.AppFreezingActivity" />
+            android:targetClass="com.brittytino.patchwork.ui.activities.AppFreezingActivity" />
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
 </shortcuts>

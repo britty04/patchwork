@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Essentials</string>
+    <string name="app_name">Patchwork</string>
     <string name="label_beta">BÊTA</string>
-    <string name="accessibility_service_description"><b>Service d\'accessibilité Essentials</b>\n\nCe service est requis pour les fonctionnalités suivantes :\n\n<b>• Réattribution d\'un bouton physique :</b>\nDétecte les appuis sur le bouton volume même si l\'écran est éteint pour déclencher des actions comme allumer la lampe-torche.\n\n<b>• Réglage par appli :</b>\nSurveille les applications actives pour appliquer des profils spécifiques pour le mode éclairage nocturne dynamique, le réglage de couleurs des notifications et le verrouillage d\'applis.\n\n<b>• Contrôler l\'écran :</b>\nAutorise l\'application à verrouiller l\'écran (par exemple en utilisant le Double Tap ou les Widgets) et détecter le changement d\'état de l\'écran.\n\n<b>• Sécurité :</b>\nPrévenir les changements non autorisé en détectant le contenu des fenêtres lorsque l\'appareil est verrouillé.\n\n<small>Aucun texte saisi ou de données utilisateur sensibles sont collectées ou transmises.</small></string>
+    <string name="accessibility_service_description"><b>Service d\'accessibilité Patchwork</b>\n\nCe service est requis pour les fonctionnalités suivantes :\n\n<b>• Réattribution d\'un bouton physique :</b>\nDétecte les appuis sur le bouton volume même si l\'écran est éteint pour déclencher des actions comme allumer la lampe-torche.\n\n<b>• Réglage par appli :</b>\nSurveille les applications actives pour appliquer des profils spécifiques pour le mode éclairage nocturne dynamique, le réglage de couleurs des notifications et le verrouillage d\'applis.\n\n<b>• Contrôler l\'écran :</b>\nAutorise l\'application à verrouiller l\'écran (par exemple en utilisant le Double Tap ou les Widgets) et détecter le changement d\'état de l\'écran.\n\n<b>• Sécurité :</b>\nPrévenir les changements non autorisé en détectant le contenu des fenêtres lorsque l\'appareil est verrouillé.\n\n<small>Aucun texte saisi ou de données utilisateur sensibles sont collectées ou transmises.</small></string>
     <string name="app_icon">Icône de l\'appli</string>
     <string name="freeze_activity_title">Gel d\'applis</string>
     <string name="freeze_activity_subtitle">Désactiver les applis rarement utilisées</string>
@@ -168,7 +168,7 @@
     <string name="tile_app_freezing">Gel d\'applis</string>
     <string name="tile_flashlight_pulse">Impulsion de lampe torche</string>
     <string name="tile_stay_awake">Rester allumé</string>
-    <string name="input_method_label">Clavier Essentials</string>
+    <string name="input_method_label">Clavier Patchwork</string>
     <string name="subtype_en_us">Anglais (US)</string>
     <string name="tile_active">Actif</string>
     <string name="tile_inactive">Inactif</string>
@@ -458,7 +458,7 @@
     <string name="perm_battery_optimization_title">Optimisation de la batterie</string>
     <string name="perm_battery_optimization_desc">Assure que le service ne soit pas fermé par le système pour économise de l\'énergie.</string>
     <!-- Tabs -->
-    <string name="tab_essentials">Essentials</string>
+    <string name="tab_Patchwork">Patchwork</string>
     <string name="tab_freeze">Gel d\'applis</string>
     <string name="tab_freeze_title">Gel d\'applis</string>
     <string name="tab_diy">DIY</string>
@@ -467,7 +467,7 @@
     <!-- Keyboard Setup -->
     <string name="label_keyboard_setup">Configuration du clavier</string>
     <string name="btn_enable_keyboard">Activer dans les paramètres</string>
-    <string name="btn_select_keyboard">Changer vers Essentials</string>
+    <string name="btn_select_keyboard">Changer vers Patchwork</string>
     <string name="status_keyboard_ready">Le clavier est actif et prêt !</string>
     <string name="label_enabled">Activé</string>
     <string name="label_disabled">Désactivé</string>
@@ -540,7 +540,7 @@
     <!-- About Section -->
     <string name="app_developer_name">Tino Britty J</string>
     <string name="app_description">L\'outil tout-en-un pour votre Pixel ou vos appareils Android</string>
-    <string name="email_subject_hello">Bonjour d\'Essentials</string>
+    <string name="email_subject_hello">Bonjour d\'Patchwork</string>
     <!-- Edge Lighting -->
     <string name="color_mode_system">Système</string>
     <string name="color_mode_custom">Personnalisé</string>
@@ -794,7 +794,7 @@
     <!-- Instructions Content -->
     <string name="instruction_section_perms_title">Permissions d\'accessibilité, de notification et de superposition</string>
     <string name="instruction_step_perms_1">Vous pouvez obtenir ce message d\'accès refusé si vous essayer d\'accorder des permissions sensibles telles que l\'accessibilité, l\'analyse des notifications ou les permissions de superposition. Pour l\'accorder, regardez les étapes ci-dessous.</string>
-    <string name="instruction_step_perms_2">1. Allez dans la page d\'informations de l\'application Essentials.</string>
+    <string name="instruction_step_perms_2">1. Allez dans la page d\'informations de l\'application Patchwork.</string>
     <string name="instruction_step_perms_3">2. Ouvrez le menu à 3 points en haut à droite et sélectionnez \"Autoriser les paramètres restreints\". Vous devrez peut-être vous authentifier avec la biométrie. Une fois fait, réessayez d\'accorder la permission.</string>
     <string name="instruction_section_shizuku_title">Shizuku</string>
     <string name="instruction_section_shizuku_desc">Shziuku est un outil puissant qui permet aux applications d\'utiliser directement les APIs système directement avec ADB ou l\'accès racine (root). Il est requis pour des fonctionnalités comme le mode économie d\'énergie maps ou le gel d\'applis. Il aide également à donner certaines permissions comme WRITE_SECURE_SETTINGS. \n\nMais la version de Shizuku disponible sur le Play Store peut-être obsolète et sera probablement inutilisable sur les versions récentes d\'Android. Dans ce cas, merci d\'installer la dernière version depuis le GitHub officiel ou un fork mis à jour.</string>
@@ -815,7 +815,7 @@
     <string name="instruction_section_flashlight_title">Le contrôle de la luminosité de la lampe-torche ne marche pas</string>
     <string name="instruction_section_flashlight_desc">Seul un nombre limité d\'appareil a le support matériel et logiciel pour ajuster la luminosité de lampe-torche. \n\nLa version minimum est Android 13 (SDK 33). \nLe contrôle de la luminosité de la lampe-torche supporte uniquement HAL 3.8 ou ultérieur, donc parmis les appareils supportés, les plus récents (Par exemple, Pixel 6/7, Galaxy S23, etc...)\'\npolodarb/Flashlight-Tiramisu</string>
     <string name="instruction_section_about_title">À quoi sert cette application ?</string>
-    <string name="instruction_section_about_desc">Bonne question \n\nJ\'ai toujours voulu obtenir le plus possible de mes appareils et j\'ai toujours été un utilisateur root depuis que j\'ai obtenu mon premier appareil Project Treble. J\'ai adoré l\'application Takser qui est divine pour les automatisations et utiliser toutes les APIs et fonctionnalités internes disponibles dans Android. \n\nDonc j\'ai réinstallé Android d\'origine en bêta pour essayer de faire le plus de choses possibles avec les permissions qu\'on nous donne. Et même les partager. Donc avec mes connaissances de débutant en Kotlin Jetpack et avec de nombreuses recherches et d\'outils d\'assistance ainsi que la superbe communauté, j\'ai construit une application tout-en-un qui contiendrait tout ce que je veux dans mon Android avec les permissions disponibles. Et voilà.\n\nLes demandes de nouvelles fonctionnalités sont disponibles, je les étudierai et je les implémenterai dans la mesure du possible et de mes compétences. De nos jours, qu\'est-ce qui est impossible ? :)\n\nPourquoi ne pas être sur le Play Store ?\nJe ne veux pas risquer le bannissement de mon compte développeur car l\'application demande l\'accès à des permissions très sensibles . Je comprends que certains peuvent se méfier d\'application externes qui pourraient être malicieuses.\nD\'ailleurs en parlant de ça, jetez un coup d\'oeil à mon autre appli AirSync si vous êtes un utilisateur Mac + Android.\n\nProfitez, bon bricolage! (っ◕‿◕)っ</string>
+    <string name="instruction_section_about_desc">Bonne question \n\nJ\'ai toujours voulu obtenir le plus possible de mes appareils et j\'ai toujours été un utilisateur root depuis que j\'ai obtenu mon premier appareil Project Treble. J\'ai adoré l\'application Takser qui est divine pour les automatisations et utiliser toutes les APIs et fonctionnalités internes disponibles dans Android. \n\nDonc j\'ai réinstallé Android d\'origine en bêta pour essayer de faire le plus de choses possibles avec les permissions qu\'on nous donne. Et même les partager. Donc avec mes connaissances de débutant en Kotlin Jetpack et avec de nombreuses recherches et d\'outils d\'assistance ainsi que la superbe communauté, j\'ai construit une application tout-en-un qui contiendrait tout ce que je veux dans mon Android avec les permissions disponibles. Et voilà.\n\nLes demandes de nouvelles fonctionnalités sont disponibles, je les étudierai et je les implémenterai dans la mesure du possible et de mes compétences. De nos jours, qu\'est-ce qui est impossible ? :)\n\nPourquoi ne pas être sur le Play Store ?\nJe ne veux pas risquer le bannissement de mon compte développeur car l\'application demande l\'accès à des permissions très sensibles . Je comprends que certains peuvent se méfier d\'application externes qui pourraient être malicieuses.\nD\'ailleurs en parlant de ça, jetez un coup d\'oeil à mon autre appli AirSync si vous êtes un utilisateur Mac + Android.\n\nProfitez, bon bricolage! </string>
     <!-- Bug Reporting -->
     <string name="action_report_bug">Signaler un bogue</string>
     <string name="toast_bug_report_copied">Signalement copié dans le presse-papiers</string>
@@ -827,7 +827,7 @@
     <string name="action_report_github">Ouvrir une Issue sur GitHub</string>
     <string name="action_report_email">Signalement par e-mail</string>
     <string name="action_copy_clipboard">Copier dans le presse-papiers</string>
-    <string name="bug_report_email_subject">Signalement de bug Essentials</string>
+    <string name="bug_report_email_subject">Signalement de bug Patchwork</string>
     <string name="bug_report_send_via">Envoyer via</string>
     <!-- Location Reached -->
     <string name="feat_location_reached_title">Sommes-nous arrivés ?</string>
@@ -836,7 +836,7 @@
     <string name="location_reached_set_destination_btn">Définir destination</string>
     <string name="location_reached_status_tracking">Suivi : %1$.4f%2$.4f</string>
     <string name="location_reached_status_none">Aucune destination définie</string>
-    <string name="location_reached_how_to">Ouvrez Google Maps, choisissez un endroit et partagez-le dans Essentials.</string>
+    <string name="location_reached_how_to">Ouvrez Google Maps, choisissez un endroit et partagez-le dans Patchwork.</string>
     <string name="location_reached_radius_title">Rayon : %d m</string>
     <string name="location_reached_radius_desc">Distance pour déclencher l\'alarme</string>
     <string name="location_reached_enable_title">Activer la notification</string>
