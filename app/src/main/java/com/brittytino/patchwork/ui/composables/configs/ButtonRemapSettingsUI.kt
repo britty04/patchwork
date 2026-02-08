@@ -312,26 +312,26 @@ fun ButtonRemapSettingsUI(
                         labelProvider = { it }
                     )
 
-                    val currentAction = when (selectedScreenTab) {
-                        0 if selectedButtonTab == 0 -> viewModel.volumeUpActionOff.value
-                        0 if selectedButtonTab == 1 -> viewModel.volumeDownActionOff.value
-                        1 if selectedButtonTab == 0 -> viewModel.volumeUpActionOn.value
+                    val currentAction = when {
+                        selectedScreenTab == 0 && selectedButtonTab == 0 -> viewModel.volumeUpActionOff.value
+                        selectedScreenTab == 0 && selectedButtonTab == 1 -> viewModel.volumeDownActionOff.value
+                        selectedScreenTab == 1 && selectedButtonTab == 0 -> viewModel.volumeUpActionOn.value
                         else -> viewModel.volumeDownActionOn.value
                     }
 
                     val onActionSelected: (String) -> Unit = { action ->
-                        when (selectedScreenTab) {
-                            0 if selectedButtonTab == 0 -> viewModel.setVolumeUpActionOff(
+                        when {
+                            selectedScreenTab == 0 && selectedButtonTab == 0 -> viewModel.setVolumeUpActionOff(
                                 action,
                                 context
                             )
 
-                            0 if selectedButtonTab == 1 -> viewModel.setVolumeDownActionOff(
+                            selectedScreenTab == 0 && selectedButtonTab == 1 -> viewModel.setVolumeDownActionOff(
                                 action,
                                 context
                             )
 
-                            1 if selectedButtonTab == 0 -> viewModel.setVolumeUpActionOn(
+                            selectedScreenTab == 1 && selectedButtonTab == 0 -> viewModel.setVolumeUpActionOn(
                                 action,
                                 context
                             )

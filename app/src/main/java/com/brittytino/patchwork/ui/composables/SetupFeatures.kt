@@ -55,7 +55,7 @@ import com.brittytino.patchwork.ui.components.sheets.PermissionsBottomSheet
 import com.brittytino.patchwork.viewmodels.MainViewModel
 import kotlinx.coroutines.delay
 
-private const val FEATURE_MAPS_POWER_SAVING = R.string.feat_maps_power_saving_title
+private val FEATURE_MAPS_POWER_SAVING = R.string.feat_maps_power_saving_title
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable

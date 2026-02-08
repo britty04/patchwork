@@ -26,10 +26,19 @@ android {
         applicationId = "com.brittytino.patchwork"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.1"
+        versionCode = 2
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("../patchwork-release.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "patchwork2026"
+            keyAlias = "patchwork"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "patchwork2026"
+        }
     }
 
     buildTypes {
@@ -39,6 +48,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     

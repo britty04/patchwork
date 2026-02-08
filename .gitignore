@@ -30,4 +30,8 @@ replay_pid*
 *.DS_Store
 *app/release/
 
+# Keystore files
+*.keystore
+*.jks
+
 Build/
