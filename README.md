@@ -10,15 +10,33 @@ Patchwork is an all-in-one power user toolkit that unlocks the full potential of
 **GitHub**: [github.com/brittytino](https://github.com/brittytino)
 
 <p align="center">
-  <a href="https://github.com/brittytino/patchwork/releases/latest"><img alt="GitHub Downloads (specific asset, all releases)" src="https://img.shields.io/github/downloads/brittytino/patchwork/app-release.apk?displayAssetName=false&style=for-the-badge&logo=android&logoColor=%23fff&labelColor=%2348C&color=%2348C">
-</a>
-  <a href="https://github.com/brittytino/patchwork/issues/new?template=bug_report.md"><img alt="GitHub Issues or Pull Requests by label" src="https://img.shields.io/github/issues/brittytino/patchwork/bug?style=for-the-badge&logo=openbugbounty&logoColor=%23fff&label=bug%3F&labelColor=%232a6&color=%232a6">
-</a>
-  <a href="https://github.com/brittytino/patchwork/issues/new?template=feature_request.md"><img alt="GitHub Issues or Pull Requests by label" src="https://img.shields.io/github/issues/brittytino/patchwork/enhancement?style=for-the-badge&logo=apachespark&logoColor=%23fff&label=Feature%20request&labelColor=%23a26&color=%23a26">
-</a>
-</a>
-  <a href="https://brittytino.com"><img src="https://img.shields.io/badge/My%20website-orange?style=for-the-badge&logo=googlechrome&logoColor=%23000&labelColor=%233AFFB8&color=%233AFFB8" alt="My website" /></a>
-  <a href="https://t.me/tidwib"><img src="https://img.shields.io/badge/Community-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Community" /></a>
+  <a href="https://github.com/brittytino/patchwork/releases/latest">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/brittytino/patchwork?style=for-the-badge&logo=github&logoColor=white&labelColor=black&color=blue">
+  </a>
+  <a href="https://github.com/brittytino/patchwork/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/brittytino/patchwork?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=black&color=green">
+  </a>
+  <a href="https://github.com/brittytino/patchwork/releases/latest">
+    <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/brittytino/patchwork/total?style=for-the-badge&logo=android&logoColor=white&labelColor=black&color=purple">
+  </a>
+  <a href="https://github.com/brittytino/patchwork/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/brittytino/patchwork?style=for-the-badge&logo=starship&logoColor=white&labelColor=black&color=yellow">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/brittytino/patchwork/issues/new?assignees=&labels=bug&template=bug_report.yml">
+    <img alt="Report Bug" src="https://img.shields.io/badge/Report_Bug-red?style=for-the-badge&logo=openbugbounty&logoColor=white">
+  </a>
+  <a href="https://github.com/brittytino/patchwork/issues/new?assignees=&labels=enhancement&template=feature_request.yml">
+    <img alt="Request Feature" src="https://img.shields.io/badge/Request_Feature-orange?style=for-the-badge&logo=apachespark&logoColor=white">
+  </a>
+  <a href="https://crowdin.com/project/patchwork-android">
+    <img alt="Crowdin" src="https://img.shields.io/badge/Translate-30%2B_Languages-cyan?style=for-the-badge&logo=crowdin&logoColor=white">
+  </a>
+  <a href="https://t.me/tidwib">
+    <img alt="Join Community" src="https://img.shields.io/badge/Join_Community-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white">
+  </a>
 </p>
 
 ## Navigation
