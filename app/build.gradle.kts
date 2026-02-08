@@ -34,11 +34,16 @@ android {
 
     signingConfigs {
         create("release") {
-            val keystoreFile = file("../patchwork-release.keystore")
+            val keystoreFile = if (System.getenv("KEYSTORE_FILE_BASE64") != null) {
+                file("../release.keystore")
+            } else {
+                file("../patchwork-release.keystore")
+            }
+            
             if (keystoreFile.exists()) {
                 storeFile = keystoreFile
                 storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "patchwork2026"
-                keyAlias = "patchwork"
+                keyAlias = System.getenv("KEY_ALIAS") ?: "patchwork"
                 keyPassword = System.getenv("KEY_PASSWORD") ?: "patchwork2026"
             }
         }
@@ -51,9 +56,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Apply release signing if keystore exists, otherwise fallback to debug signing
-            // so that the APK is still installable for testing/pre-release.
-            val keystoreFile = file("../patchwork-release.keystore")
+            // Use release signing if possible
+            val keystoreFile = if (System.getenv("KEYSTORE_FILE_BASE64") != null) {
+                file("../release.keystore")
+            } else {
+                file("../patchwork-release.keystore")
+            }
+            
             if (keystoreFile.exists()) {
                 signingConfig = signingConfigs.getByName("release")
             } else {
