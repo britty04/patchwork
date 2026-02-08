@@ -263,7 +263,7 @@ Shizuku provides a safe way to grant elevated permissions without rooting your d
 ### Setup:
 1. Download Shizuku from a maintained fork:
    - **Recommended**: [yangFenTuoZi/Shizuku](https://github.com/yangFenTuoZi/Shizuku)
-   - ⚠️ **Avoid**: Google Play Store version (no longer well-maintained, especially for Android 16+)
+   - ⚠️ **Avoid**: Older unmaintained versions (especially for Android 16+)
 
 ## Root Access
 
@@ -369,20 +369,6 @@ Please review our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing. 
 ### Feature Requests & Bug Reports:
 - 🐛 **Found a bug?** [Report it here](https://github.com/brittytino/patchwork/issues/new?template=bug_report.md)
 - 💡 **Have an idea?** [Request a feature](https://github.com/brittytino/patchwork/issues/new?template=feature_request.md)
-
-## Why Not on Play Store?
-
-You might wonder why Patchwork isn't available on the Google Play Store. Here's why:
-
-The app uses highly sensitive system APIs and internal permissions that typically violate Play Store policies. Features like:
-- System-level accessibility control
-- Direct hardware button interception
-- App freezing (pm disable)
-- Advanced system settings modification
-
-...are all technically restricted or discouraged by Play Store guidelines. While we build everything with safety in mind, we don't want to risk getting the developer account banned or having the app constantly removed.
-
-**Sideloading** (installing APKs directly) gives us the freedom to provide these power-user features without restrictions. Plus, it keeps Patchwork truly independent and community-focused!
 
 ## Project Philosophy
 
