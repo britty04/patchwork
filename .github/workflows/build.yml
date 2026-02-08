@@ -33,15 +33,23 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace --no-daemon
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --stacktrace --no-daemon
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Rename and Prepare APK
+        run: |
+          mkdir -p release-artifacts
+          cp app/build/outputs/apk/release/app-release.apk release-artifacts/patchwork-v1.1.0.apk
           
-      - name: Upload Debug APK
+      - name: Upload Release APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: patchwork-debug-${{ github.sha }}
-          path: app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 30
+          name: patchwork-release-${{ github.sha }}
+          path: release-artifacts/patchwork-v1.1.0.apk
+          retention-days: 90
           
       - name: Create or Update Latest Release
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -50,19 +58,19 @@ jobs:
           tag_name: v1.1.0
           name: Patchwork v1.1.0 (Latest)
           body: |
-            ## 🚀 Latest Development Build
+            ## 🚀 Latest Production Build
             
             **Automatically built from latest commit:** ${{ github.sha }}
             
             ### 📦 Download
-            - **patchwork-debug.apk** - Debug build (recommended for testing)
+            - **patchwork-v1.1.0.apk** - Official Release Build
             
             ### 📝 Recent Changes
             See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for full version history.
             
             ---
-            *This is an automated build. Download the APK below and install on your Android device.*
-          files: app/build/outputs/apk/debug/app-debug.apk
+            *This is an automated production build. Install the APK below on your Android device.*
+          files: release-artifacts/patchwork-v1.1.0.apk
           draft: false
           prerelease: false
           

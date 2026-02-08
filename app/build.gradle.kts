@@ -51,10 +51,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Only apply release signing if keystore exists
+            // Apply release signing if keystore exists, otherwise fallback to debug signing
+            // so that the APK is still installable for testing/pre-release.
             val keystoreFile = file("../patchwork-release.keystore")
             if (keystoreFile.exists()) {
                 signingConfig = signingConfigs.getByName("release")
+            } else {
+                signingConfig = signingConfigs.getByName("debug")
             }
         }
     }
