@@ -34,10 +34,13 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("../patchwork-release.keystore")
-            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "patchwork2026"
-            keyAlias = "patchwork"
-            keyPassword = System.getenv("KEY_PASSWORD") ?: "patchwork2026"
+            val keystoreFile = file("../patchwork-release.keystore")
+            if (keystoreFile.exists()) {
+                storeFile = keystoreFile
+                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "patchwork2026"
+                keyAlias = "patchwork"
+                keyPassword = System.getenv("KEY_PASSWORD") ?: "patchwork2026"
+            }
         }
     }
 
@@ -48,7 +51,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
+            // Only apply release signing if keystore exists
+            val keystoreFile = file("../patchwork-release.keystore")
+            if (keystoreFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     
