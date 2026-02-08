@@ -43,6 +43,29 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
           
+      - name: Create or Update Latest Release
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.1.0
+          name: Patchwork v1.1.0 (Latest)
+          body: |
+            ## 🚀 Latest Development Build
+            
+            **Automatically built from latest commit:** ${{ github.sha }}
+            
+            ### 📦 Download
+            - **patchwork-debug.apk** - Debug build (recommended for testing)
+            
+            ### 📝 Recent Changes
+            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for full version history.
+            
+            ---
+            *This is an automated build. Download the APK below and install on your Android device.*
+          files: app/build/outputs/apk/debug/app-debug.apk
+          draft: false
+          prerelease: false
+          
       - name: Comment on PR with APK
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
