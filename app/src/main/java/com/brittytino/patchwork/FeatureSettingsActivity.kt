@@ -74,6 +74,11 @@ import com.brittytino.patchwork.ui.composables.configs.ScreenLockedSecuritySetti
 import com.brittytino.patchwork.ui.composables.configs.KeyboardSettingsUI
 import com.brittytino.patchwork.utils.HapticUtil
 import com.brittytino.patchwork.domain.registry.FeatureRegistry
+import com.brittytino.patchwork.ui.screens.AppBehaviorScreen
+import com.brittytino.patchwork.ui.screens.AppCooldownScreen
+import com.brittytino.patchwork.ui.screens.IdleAppScreen
+import com.brittytino.patchwork.ui.screens.ActionHistoryScreen
+import com.brittytino.patchwork.ui.screens.SystemSnapshotsScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 class FeatureSettingsActivity : FragmentActivity() {
@@ -178,6 +183,7 @@ class FeatureSettingsActivity : FragmentActivity() {
                 val isOverlayPermissionGranted by viewModel.isOverlayPermissionGranted
                 val isNotificationLightingAccessibilityEnabled by viewModel.isNotificationLightingAccessibilityEnabled
                 val isNotificationListenerEnabled by viewModel.isNotificationListenerEnabled
+                val isUsageStatsPermissionGranted by viewModel.isUsageStatsPermissionGranted
 
                 // FAB State for Notification Lighting
                 var fabExpanded by remember { mutableStateOf(true) }
@@ -190,7 +196,7 @@ class FeatureSettingsActivity : FragmentActivity() {
                 }
 
                 // Show permission sheet if feature has missing permissions
-                LaunchedEffect(featureId, isAccessibilityEnabled, isWriteSecureSettingsEnabled, isOverlayPermissionGranted, isNotificationLightingAccessibilityEnabled, isNotificationListenerEnabled) {
+                LaunchedEffect(featureId, isAccessibilityEnabled, isWriteSecureSettingsEnabled, isOverlayPermissionGranted, isNotificationLightingAccessibilityEnabled, isNotificationListenerEnabled, isUsageStatsPermissionGranted) {
                     val hasMissingPermissions = when (featureId) {
                         "Screen off widget" -> !isAccessibilityEnabled
                         "Statusbar icons" -> !isWriteSecureSettingsEnabled
@@ -203,6 +209,13 @@ class FeatureSettingsActivity : FragmentActivity() {
                         "Freeze" -> !com.brittytino.patchwork.utils.ShellUtils.hasPermission(context)
                         "Location reached" -> !viewModel.isLocationPermissionGranted.value || !viewModel.isBackgroundLocationPermissionGranted.value
                         "Quick settings tiles" -> !viewModel.isWriteSettingsEnabled.value
+                        
+                        // New Features Check
+                        "App Behavior Controller" -> !isAccessibilityEnabled
+                        "Smart App Cooldown" -> !isAccessibilityEnabled || !isOverlayPermissionGranted
+                        "Idle App Auto-Action" -> !isUsageStatsPermissionGranted
+                        "System State Snapshots" -> !isWriteSecureSettingsEnabled
+                        
                         else -> false
                     }
                     showPermissionSheet = hasMissingPermissions
@@ -290,8 +303,94 @@ class FeatureSettingsActivity : FragmentActivity() {
                                 action = {
                                     context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
                                 },
+                                isGranted = isAccessibilityEnabled                            ),
+                            PermissionItem(
+                                iconRes = R.drawable.rounded_security_24,
+                                title = R.string.perm_write_secure_title,
+                                description = R.string.perm_write_secure_desc_night_light,
+                                dependentFeatures = PermissionRegistry.getFeatures("WRITE_SECURE_SETTINGS"),
+                                actionLabel = R.string.perm_action_copy_adb,
+                                action = {
+                                    val adbCommand = "adb shell pm grant com.brittytino.patchwork android.permission.WRITE_SECURE_SETTINGS"
+                                    val clipboard = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+                                    val clip = ClipData.newPlainText("adb_command", adbCommand)
+                                    clipboard.setPrimaryClip(clip)
+                                },
+                                secondaryActionLabel = R.string.perm_action_check,
+                                secondaryAction = {
+                                    viewModel.isWriteSecureSettingsEnabled.value = viewModel.canWriteSecureSettings(context)
+                                },
+                                isGranted = isWriteSecureSettingsEnabled
+                            )
+                        )
+                        "App Behavior Controller" -> listOf(
+                            PermissionItem(
+                                iconRes = R.drawable.rounded_settings_accessibility_24,
+                                title = R.string.perm_accessibility_title,
+                                description = R.string.perm_accessibility_desc_common,
+                                dependentFeatures = PermissionRegistry.getFeatures("ACCESSIBILITY"),
+                                actionLabel = R.string.perm_action_enable,
+                                action = { context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)) },
                                 isGranted = isAccessibilityEnabled
                             )
+                        )
+                        "Smart App Cooldown" -> listOf(
+                             PermissionItem(
+                                iconRes = R.drawable.rounded_settings_accessibility_24,
+                                title = R.string.perm_accessibility_title,
+                                description = R.string.perm_accessibility_desc_common,
+                                dependentFeatures = PermissionRegistry.getFeatures("ACCESSIBILITY"),
+                                actionLabel = R.string.perm_action_enable,
+                                action = { context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)) },
+                                isGranted = isAccessibilityEnabled
+                            ),
+                            PermissionItem(
+                                iconRes = R.drawable.rounded_magnify_fullscreen_24,
+                                title = R.string.perm_overlay_title,
+                                description = R.string.perm_overlay_desc,
+                                dependentFeatures = PermissionRegistry.getFeatures("DRAW_OVERLAYS"),
+                                actionLabel = R.string.perm_action_grant,
+                                action = {
+                                    val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${context.packageName}"))
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                    context.startActivity(intent)
+                                },
+                                isGranted = isOverlayPermissionGranted
+                            )
+                        )
+                        "Idle App Auto-Action" -> listOf(
+                            PermissionItem(
+                                iconRes = R.drawable.rounded_info_24,
+                                title = R.string.feat_idle_app_title,
+                                description = R.string.feat_idle_app_desc,
+                                dependentFeatures = PermissionRegistry.getFeatures("USAGE_STATS"),
+                                actionLabel = R.string.perm_action_grant,
+                                action = {
+                                    val intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                    context.startActivity(intent)
+                                },
+                                isGranted = isUsageStatsPermissionGranted
+                            )
+                        )
+                        "System State Snapshots" -> listOf(
+                            PermissionItem(
+                                iconRes = R.drawable.rounded_security_24,
+                                title = R.string.perm_write_secure_title,
+                                description = R.string.perm_write_secure_desc_common,
+                                dependentFeatures = PermissionRegistry.getFeatures("WRITE_SECURE_SETTINGS"),
+                                actionLabel = R.string.perm_action_copy_adb,
+                                action = {
+                                    val adbCommand = "adb shell pm grant com.brittytino.patchwork android.permission.WRITE_SECURE_SETTINGS"
+                                    val clipboard = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+                                    val clip = ClipData.newPlainText("adb_command", adbCommand)
+                                    clipboard.setPrimaryClip(clip)
+                                },
+                                secondaryActionLabel = R.string.perm_action_check,
+                                secondaryAction = {
+                                    viewModel.isWriteSecureSettingsEnabled.value = viewModel.canWriteSecureSettings(context)
+                                },
+                                isGranted = isWriteSecureSettingsEnabled                            )
                         )
                         "Dynamic night light" -> listOf(
                             PermissionItem(
@@ -462,150 +561,168 @@ class FeatureSettingsActivity : FragmentActivity() {
                 }
 
                 val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
-                Scaffold(
-                    contentWindowInsets = androidx.compose.foundation.layout.WindowInsets(0, 0, 0, 0),
-                    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-                    containerColor = MaterialTheme.colorScheme.surfaceContainer,
-                    topBar = {
-                        ReusableTopAppBar(
-                            title = if (featureObj != null) stringResource(featureObj.title) else featureId,
-                            hasBack = true,
-                            hasSearch = false,
-                            onBackClick = { finish() },
-                            scrollBehavior = scrollBehavior,
-                            subtitle = if (featureObj != null) stringResource(featureObj.description) else "",
-                            isBeta = featureObj?.isBeta ?: false
-                        )
-                    },
-                    floatingActionButton = {
-                        if (featureId == "Notification lighting") {
-                            ExtendedFloatingActionButton(
-                                onClick = {
-                                    HapticUtil.performVirtualKeyHaptic(view)
-                                    viewModel.triggerNotificationLighting(context)
-                                },
-                                expanded = fabExpanded,
-                                icon = { Icon(painter = painterResource(id = R.drawable.rounded_play_arrow_24), contentDescription = null) },
-                                text = { Text(stringResource(R.string.action_preview)) },
-                                modifier = Modifier.height(64.dp)
-                            )
-                        }
+                
+                // Check if this is a full-screen feature that manages its own Scaffold
+                val isFullScreenFeature = featureId == "App Behavior Controller" || 
+                                          featureId == "Smart App Cooldown" || 
+                                          featureId == "Idle App Auto-Action" || 
+                                          featureId == "Action History Timeline" || 
+                                          featureId == "System State Snapshots"
+
+                if (isFullScreenFeature) {
+                    when (featureId) {
+                        "App Behavior Controller" -> AppBehaviorScreen()
+                        "Smart App Cooldown" -> AppCooldownScreen()
+                        "Idle App Auto-Action" -> IdleAppScreen()
+                        "Action History Timeline" -> ActionHistoryScreen(onNavigateBack = { finish() })
+                        "System State Snapshots" -> SystemSnapshotsScreen(onNavigateBack = { finish() })
                     }
-                ) { innerPadding ->
-                    val hasScroll = featureId != "Sound mode tile"
-                    Column(
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .fillMaxSize()
-                            .then(if (hasScroll) Modifier.verticalScroll(rememberScrollState()) else Modifier)
-                    ) {
-                        when (featureId) {
-                            "Screen off widget" -> {
-                                ScreenOffWidgetSettingsUI(
-                                    viewModel = viewModel,
-                                    selectedHaptic = selectedHaptic,
-                                    onHapticSelected = { type -> selectedHaptic = type },
-                                    vibrator = vibrator,
-                                    prefs = prefs,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
+                } else {
+                    Scaffold(
+                        contentWindowInsets = androidx.compose.foundation.layout.WindowInsets(0, 0, 0, 0),
+                        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                        topBar = {
+                            ReusableTopAppBar(
+                                title = if (featureObj != null) stringResource(featureObj.title) else featureId,
+                                hasBack = true,
+                                hasSearch = false,
+                                onBackClick = { finish() },
+                                scrollBehavior = scrollBehavior,
+                                subtitle = if (featureObj != null) stringResource(featureObj.description) else "",
+                                isBeta = featureObj?.isBeta ?: false
+                            )
+                        },
+                        floatingActionButton = {
+                            if (featureId == "Notification lighting") {
+                                ExtendedFloatingActionButton(
+                                    onClick = {
+                                        HapticUtil.performVirtualKeyHaptic(view)
+                                        viewModel.triggerNotificationLighting(context)
+                                    },
+                                    expanded = fabExpanded,
+                                    icon = { Icon(painter = painterResource(id = R.drawable.rounded_play_arrow_24), contentDescription = null) },
+                                    text = { Text(stringResource(R.string.action_preview)) },
+                                    modifier = Modifier.height(64.dp)
                                 )
                             }
-                            "Statusbar icons" -> {
-                                StatusBarIconSettingsUI(
-                                    viewModel = statusBarViewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
+                        }
+                    ) { innerPadding ->
+                        val hasScroll = featureId != "Sound mode tile"
+                        Column(
+                            modifier = Modifier
+                                .padding(innerPadding)
+                                .fillMaxSize()
+                                .then(if (hasScroll) Modifier.verticalScroll(rememberScrollState()) else Modifier)
+                        ) {
+                            when (featureId) {
+                                "Screen off widget" -> {
+                                    ScreenOffWidgetSettingsUI(
+                                        viewModel = viewModel,
+                                        selectedHaptic = selectedHaptic,
+                                        onHapticSelected = { type -> selectedHaptic = type },
+                                        vibrator = vibrator,
+                                        prefs = prefs,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Statusbar icons" -> {
+                                    StatusBarIconSettingsUI(
+                                        viewModel = statusBarViewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Caffeinate" -> {
+                                    CaffeinateSettingsUI(
+                                        viewModel = caffeinateViewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Notification lighting" -> {
+                                    NotificationLightingSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Sound mode tile" -> {
+                                    SoundModeTileSettingsUI(
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Button remap" -> {
+                                    ButtonRemapSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Dynamic night light" -> {
+                                    DynamicNightLightSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Snooze system notifications" -> {
+                                    SnoozeNotificationsSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Screen locked security" -> {
+                                    ScreenLockedSecuritySettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "App lock" -> {
+                                    AppLockSettingsUI(
+                                        viewModel = viewModel,
+                                        highlightKey = highlightSetting
+                                    )
+                                }
+                                "Freeze" -> {
+                                    com.brittytino.patchwork.ui.composables.configs.FreezeSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightKey = highlightSetting
+                                    )
+                                }
+                                "Quick settings tiles" -> {
+                                    QuickSettingsTilesSettingsUI(
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Location reached" -> {
+                                    LocationReachedSettingsUI(
+                                        mainViewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "System Keyboard" -> {
+                                    KeyboardSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp),
+                                        highlightSetting = highlightSetting
+                                    )
+                                }
+                                "Batteries" -> {
+                                    BatteriesSettingsUI(
+                                        viewModel = viewModel,
+                                        modifier = Modifier.padding(top = 16.dp)
+                                    )
+                                }
+                                // else -> default UI (optional cleanup)
                             }
-                            "Caffeinate" -> {
-                                CaffeinateSettingsUI(
-                                    viewModel = caffeinateViewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Notification lighting" -> {
-                                NotificationLightingSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Sound mode tile" -> {
-                                SoundModeTileSettingsUI(
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Button remap" -> {
-                                ButtonRemapSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Dynamic night light" -> {
-                                DynamicNightLightSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Snooze system notifications" -> {
-                                SnoozeNotificationsSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Screen locked security" -> {
-                                ScreenLockedSecuritySettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "App lock" -> {
-                                AppLockSettingsUI(
-                                    viewModel = viewModel,
-                                    highlightKey = highlightSetting
-                                )
-                            }
-                            "Freeze" -> {
-                                com.brittytino.patchwork.ui.composables.configs.FreezeSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightKey = highlightSetting
-                                )
-                            }
-                            "Quick settings tiles" -> {
-                                QuickSettingsTilesSettingsUI(
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Location reached" -> {
-                                LocationReachedSettingsUI(
-                                    mainViewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "System Keyboard" -> {
-                                KeyboardSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp),
-                                    highlightSetting = highlightSetting
-                                )
-                            }
-                            "Batteries" -> {
-                                BatteriesSettingsUI(
-                                    viewModel = viewModel,
-                                    modifier = Modifier.padding(top = 16.dp)
-                                )
-                            }
-                            // else -> default UI (optional cleanup)
                         }
                     }
                 }

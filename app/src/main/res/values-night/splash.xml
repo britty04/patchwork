@@ -7,7 +7,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowSplashScreenBackground">@color/app_window_background</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
         <item name="postSplashScreenTheme">@style/Theme.Patchwork</item>
     </style>
 </resources>

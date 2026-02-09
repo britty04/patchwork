@@ -319,6 +319,23 @@
     <string name="feat_qs_tiles_desc">View all</string>
     <string name="feat_button_remap_title">Button remap</string>
     <string name="feat_button_remap_desc">Remap hardware button actions</string>
+
+    <!-- New Features -->
+    <string name="feat_app_behavior_title">App Behavior Controller</string>
+    <string name="feat_app_behavior_desc">Define per-app rules for volume, screen, etc.</string>
+    
+    <string name="feat_app_cooldown_title">Smart App Cooldown</string>
+    <string name="feat_app_cooldown_desc">Prevent compulsive app reopening with delays</string>
+    
+    <string name="feat_idle_app_title">Idle App Auto-Action</string>
+    <string name="feat_idle_app_desc">Auto-freeze or notify for unused apps</string>
+    
+    <string name="feat_action_history_title">Action History Timeline</string>
+    <string name="feat_action_history_desc">View log of all Patchwork actions</string>
+    
+    <string name="feat_system_snapshots_title">System State Snapshots</string>
+    <string name="feat_system_snapshots_desc">Save and restore system profiles</string>
+
     <string name="feat_dynamic_night_light_title">Dynamic night light</string>
     <string name="feat_dynamic_night_light_desc">Toggle night light based on app</string>
     <string name="feat_screen_locked_security_title">Screen locked security</string>

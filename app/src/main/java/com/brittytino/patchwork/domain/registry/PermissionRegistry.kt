@@ -68,4 +68,11 @@ fun initPermissionRegistry() {
 
     // Modify system settings permission
     PermissionRegistry.register("WRITE_SETTINGS", R.string.feat_qs_tiles_title)
+
+    // New Features
+    PermissionRegistry.register("USAGE_STATS", R.string.feat_idle_app_title)
+    PermissionRegistry.register("ACCESSIBILITY", R.string.feat_app_behavior_title)
+    PermissionRegistry.register("ACCESSIBILITY", R.string.feat_app_cooldown_title)
+    PermissionRegistry.register("DRAW_OVERLAYS", R.string.feat_app_cooldown_title)
+    PermissionRegistry.register("WRITE_SECURE_SETTINGS", R.string.feat_system_snapshots_title)
 }
