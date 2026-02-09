@@ -402,11 +402,11 @@ fun KeyboardInputView(
                 content = {
                         val functions = remember(isClipboardEnabled) {
                             val list = mutableListOf(
-                                R.drawable.ic_emoji to "Emoji",
-                                R.drawable.ic_undo to "Undo"
+                                R.drawable.rounded_heart_smile_24 to "Emoji",
+                                R.drawable.rounded_arrow_back_24 to "Undo"
                             )
                             if (isClipboardEnabled) {
-                                list.add(1, R.drawable.ic_clipboard to "Clipboard")
+                                list.add(1, R.drawable.rounded_content_paste_24 to "Clipboard")
                             }
                             list
                         }
@@ -644,7 +644,7 @@ fun KeyboardInputView(
                                 .fillMaxHeight()
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.key_shift),
+                                painter = painterResource(id = R.drawable.rounded_keyboard_arrow_up_24),
                                 contentDescription = "Shift",
                                 modifier = Modifier.size(24.dp),
                                 tint = if (shiftState != ShiftState.OFF) MaterialTheme.colorScheme.onPrimary

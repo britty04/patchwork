@@ -967,16 +967,7 @@ private fun LogoCarouselPicker(
     modifier: Modifier = Modifier
 ) {
     val logos = listOf(
-        R.drawable.apple,
-        R.drawable.cmf,
-        R.drawable.google,
-        R.drawable.moto,
-        R.drawable.nothing,
-        R.drawable.oppo,
-        R.drawable.samsung,
-        R.drawable.sony,
-        R.drawable.vivo,
-        R.drawable.xiaomi
+        R.mipmap.ic_launcher
     )
     
     val carouselState = androidx.compose.material3.carousel.rememberCarouselState { logos.size }

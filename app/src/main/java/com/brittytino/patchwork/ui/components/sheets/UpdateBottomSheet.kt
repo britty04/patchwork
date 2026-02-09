@@ -157,7 +157,7 @@ fun UpdateBottomSheet(
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.brand_github),
+                                painter = painterResource(id = R.drawable.rounded_globe_24),
                                 contentDescription = null,
                                 modifier = Modifier.size(18.dp)
                             )

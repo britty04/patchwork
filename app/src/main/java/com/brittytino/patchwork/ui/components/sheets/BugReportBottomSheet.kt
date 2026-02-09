@@ -224,7 +224,7 @@ fun BugReportBottomSheet(
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Icon(painter = painterResource(R.drawable.brand_github), contentDescription = null, modifier = Modifier.size(18.dp))
+                    Icon(painter = painterResource(R.drawable.rounded_globe_24), contentDescription = null, modifier = Modifier.size(18.dp))
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(stringResource(R.string.action_report_github))
                 }

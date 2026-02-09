@@ -80,22 +80,8 @@ class WatermarkViewModel(
     }
 
     private fun detectOemLogo(exif: ExifData): Int? {
-        val make = exif.make?.lowercase() ?: ""
-        val model = exif.model?.lowercase() ?: ""
-        
-        return when {
-            make.contains("apple") || model.contains("iphone") -> R.drawable.apple
-            make.contains("google") || model.contains("pixel") -> R.drawable.google
-            make.contains("samsung") -> R.drawable.samsung
-            make.contains("xiaomi") || make.contains("redmi") || make.contains("poco") -> R.drawable.xiaomi
-            make.contains("oppo") -> R.drawable.oppo
-            make.contains("vivo") -> R.drawable.vivo
-            make.contains("sony") -> R.drawable.sony
-            make.contains("nothing") -> R.drawable.nothing
-            make.contains("cmf") -> R.drawable.cmf
-            make.contains("motorola") || make.contains("moto") -> R.drawable.moto
-            else -> null
-        }
+        // Updated to use the new app logo for all watermarks as requested
+        return R.mipmap.ic_launcher
     }
 
     fun loadPreview(uri: Uri) {

@@ -119,7 +119,7 @@ fun AboutSection(
                     modifier = Modifier.padding(horizontal = 4.dp)
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.brand_github),
+                        painter = painterResource(id = R.drawable.rounded_globe_24),
                         contentDescription = null,
                         modifier = Modifier.size(18.dp)
                     )
@@ -161,7 +161,7 @@ fun AboutSection(
                     modifier = Modifier.padding(horizontal = 4.dp)
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.brand_telegram),
+                        painter = painterResource(id = R.drawable.rounded_globe_24),
                         contentDescription = null,
                         modifier = Modifier.size(18.dp)
                     )

@@ -86,6 +86,7 @@ class MainViewModel : ViewModel() {
     val isBackgroundLocationPermissionGranted = mutableStateOf(false)
     val isFullScreenIntentPermissionGranted = mutableStateOf(false)
     val isBluetoothPermissionGranted = mutableStateOf(false)
+    val isUsageStatsPermissionGranted = mutableStateOf(false)
     
     val isBluetoothDevicesEnabled = mutableStateOf(false)
 
@@ -241,6 +242,7 @@ class MainViewModel : ViewModel() {
         isWriteSettingsEnabled.value = PermissionUtils.canWriteSystemSettings(context)
         
         isBluetoothPermissionGranted.value = PermissionUtils.hasBluetoothPermission(context)
+        isUsageStatsPermissionGranted.value = PermissionUtils.hasUsageStatsPermission(context)
         
         settingsRepository.registerOnSharedPreferenceChangeListener(preferenceChangeListener)
         
@@ -263,12 +265,20 @@ class MainViewModel : ViewModel() {
         notificationLightingIndicatorY.value = settingsRepository.getFloat(SettingsRepository.KEY_EDGE_LIGHTING_INDICATOR_Y, 2f)
         isRootEnabled.value = settingsRepository.getBoolean(SettingsRepository.KEY_USE_ROOT)
         
-        if (isRootEnabled.value) {
-            isRootAvailable.value = com.brittytino.patchwork.utils.RootUtils.isRootAvailable()
-            isRootPermissionGranted.value = com.brittytino.patchwork.utils.RootUtils.isRootPermissionGranted()
-        } else {
-             isRootAvailable.value = false
-             isRootPermissionGranted.value = false
+        viewModelScope.launch(Dispatchers.IO) {
+            if (isRootEnabled.value) {
+                val available = com.brittytino.patchwork.utils.RootUtils.isRootAvailable()
+                val granted = com.brittytino.patchwork.utils.RootUtils.isRootPermissionGranted()
+                withContext(Dispatchers.Main) {
+                    isRootAvailable.value = available
+                    isRootPermissionGranted.value = granted
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    isRootAvailable.value = false
+                    isRootPermissionGranted.value = false
+                }
+            }
         }
         
         notificationLightingIndicatorScale.value = settingsRepository.getFloat(SettingsRepository.KEY_EDGE_LIGHTING_INDICATOR_SCALE, 1.0f)

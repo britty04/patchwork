@@ -521,6 +521,70 @@ object FeatureRegistry {
         },
 
         object : Feature(
+            id = "App Behavior Controller",
+            title = R.string.feat_app_behavior_title,
+            iconRes = R.drawable.rounded_settings_accessibility_24,
+            category = R.string.cat_tools,
+            description = R.string.feat_app_behavior_desc,
+            permissionKeys = listOf("ACCESSIBILITY"),
+            showToggle = false
+        ) {
+            override fun isEnabled(viewModel: MainViewModel) = true
+            override fun onToggle(viewModel: MainViewModel, context: Context, enabled: Boolean) {}
+        },
+
+        object : Feature(
+            id = "Smart App Cooldown",
+            title = R.string.feat_app_cooldown_title,
+            iconRes = R.drawable.rounded_timer_24,
+            category = R.string.cat_tools,
+            description = R.string.feat_app_cooldown_desc,
+            permissionKeys = listOf("ACCESSIBILITY", "DRAW_OVERLAYS"),
+            showToggle = false
+        ) {
+            override fun isEnabled(viewModel: MainViewModel) = true
+            override fun onToggle(viewModel: MainViewModel, context: Context, enabled: Boolean) {}
+        },
+
+        object : Feature(
+            id = "Idle App Auto-Action",
+            title = R.string.feat_idle_app_title,
+            iconRes = R.drawable.rounded_av_timer_24,
+            category = R.string.cat_tools,
+            description = R.string.feat_idle_app_desc,
+            permissionKeys = listOf("USAGE_STATS"),
+            showToggle = false
+        ) {
+            override fun isEnabled(viewModel: MainViewModel) = true
+            override fun onToggle(viewModel: MainViewModel, context: Context, enabled: Boolean) {}
+        },
+
+        object : Feature(
+            id = "Action History Timeline",
+            title = R.string.feat_action_history_title,
+            iconRes = R.drawable.rounded_fiber_smart_record_24,
+            category = R.string.cat_tools,
+            description = R.string.feat_action_history_desc,
+            showToggle = false
+        ) {
+            override fun isEnabled(viewModel: MainViewModel) = true
+            override fun onToggle(viewModel: MainViewModel, context: Context, enabled: Boolean) {}
+        },
+
+        object : Feature(
+            id = "System State Snapshots",
+            title = R.string.feat_system_snapshots_title,
+            iconRes = R.drawable.rounded_save_24,
+            category = R.string.cat_tools,
+            description = R.string.feat_system_snapshots_desc,
+            permissionKeys = listOf("WRITE_SECURE_SETTINGS"),
+            showToggle = false
+        ) {
+            override fun isEnabled(viewModel: MainViewModel) = true
+            override fun onToggle(viewModel: MainViewModel, context: Context, enabled: Boolean) {}
+        },
+
+        object : Feature(
             id = "Watermarks",
             title = R.string.feat_watermark_title,
             iconRes = R.drawable.rounded_draw_24,
